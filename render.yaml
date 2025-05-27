@@ -1,0 +1,32 @@
+# render.yaml
+services:
+  - type: postgres
+    name: digital-economy-db
+    plan: free
+
+  - type: web
+    name: backend-api
+    env: docker
+    dockerfilePath: ./backend/Dockerfile
+    plan: free
+    envVars:
+      - key: DATABASE_URL
+        value: postgres://postgres:password@digital-economy-db:5432/digital_economy
+      - key: OPENROUTER_API_KEY
+        fromSecret: OPENROUTER_API_KEY
+      - key: OLLAMA_HOST
+        value: https://openrouter.ai/api/v1/chat/completions 
+      - key: MODEL_NAME
+        value: meta-llama/llama3-8b
+
+  - type: web
+    name: streamlit-dashboard
+    env: docker
+    dockerfilePath: ./frontend/Dockerfile
+    plan: free
+    envVars:
+      - key: BACKEND_API_URL
+        value: https://backend-api.onrender.com 
+    ports:
+      - number: 8000
+        isDefault: true
