@@ -309,3 +309,21 @@ VALUES
 ('Malaysia', 2020, 150000, 45.6),
 ('Indonesia', 2020, 200000, 38.9),
 ('Saudi Arabia', 2020, 80000, 62.3);
+
+-- ./data/init.sql
+CREATE TABLE IF NOT EXISTS halal_ecommerce (
+    id SERIAL PRIMARY KEY,
+    country VARCHAR(100),
+    year INTEGER,
+    revenue_usd DOUBLE PRECISION,
+    growth_rate DOUBLE PRECISION,
+    sector VARCHAR(50),
+    market_type VARCHAR(50),
+    customer_type VARCHAR(50)
+);
+
+INSERT INTO halal_ecommerce (country, year, revenue_usd, growth_rate, sector, market_type, customer_type)
+VALUES
+('Malaysia', 2020, 1500000, 8.2, 'Food', 'B2C', 'Muslim'),
+('Indonesia', 2020, 1200000, 6.5, 'Fashion', 'B2B', 'Non-Muslim'),
+('Saudi Arabia', 2020, 2000000, 10.0, 'Pharmaceuticals', 'B2B', 'Muslim');

@@ -1,5 +1,5 @@
 # backend/main.py
-from fastapi import FastAPI, Depends, HTTPException, Query, Session
+from fastapi import FastAPI, Depends, HTTPException, Query
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker, Session
 import pandas as pd

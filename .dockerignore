@@ -1,14 +1,15 @@
-# Avoid copying large files into Docker images
+echo """
+# Python
 __pycache__
 *.pyc
-*.pyo
-*.pyd
 *.db
-*.sqlite
+*.sqlite3
+*.csv
 *.log
-*.env
-.git
-.gitignore
-*.md
-Dockerfile
-README.md
+.env
+*.lock
+*.DS_Store
+.env.local
+*.env.development.local
+*.env.test.local
+""" 
