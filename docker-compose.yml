@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres_db_v3
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: digital_economy
+    volumes:
+      - ./data:/docker-entrypoint-initdb.d
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - dashboard_network
+
+  backend:
+    build:
+      context: ./backend
+    container_name: backend_api
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    networks:
+      - dashboard_network
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: streamlit_dashboard
+    ports:
+      - "8501:8501"
+    depends_on:
+      - backend
+    networks:
+      - dashboard_network
+
+volumes:
+  postgres_data:
+
+networks:
+  dashboard_network:
+    driver: bridge

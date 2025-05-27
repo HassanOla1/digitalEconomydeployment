@@ -1,0 +1,11 @@
+# backend/requirements.txt
+fastapi>=0.115
+uvicorn>=0.21
+sqlalchemy>=2.0
+psycopg2-binary>=2.9
+pandas>=2.0
+langchain-experimental>=0.3.4
+langchain-community>=0.3.24
+langchain-openai>=0.1.0
+openai>=1.38
+pydantic>=2.7.4,<3.0.0

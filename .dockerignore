@@ -1,0 +1,14 @@
+# Avoid copying large files into Docker images
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite
+*.log
+*.env
+.git
+.gitignore
+*.md
+Dockerfile
+README.md
